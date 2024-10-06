@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Мой гардероб</string>
+    <string name="btn_start">К гардеробу!</string>
+    <string name="menu_exit">Выход</string>
+</resources>
