@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.btn_start).setOnClickListener {
             startActivity(Intent(this, WardrobeActivity::class.java))
-            finish()
         }
 
     }

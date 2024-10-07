@@ -10,13 +10,13 @@ import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class WardrobeActivity : AppCompatActivity() {
+class WardrobeActivity : AppCompatActivity(), Updatable {
 
     private lateinit var statusBar: View
     private lateinit var toolbar: Toolbar
     private lateinit var clothesRV: RecyclerView
 
-    val clothes = Clothes().list
+    val clothes: MutableList<Cloth> = Clothes().list.toMutableList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +25,22 @@ class WardrobeActivity : AppCompatActivity() {
         initToolbar()
         clothesRV = findViewById(R.id.rv_clothes)
         clothesRV.layoutManager = LinearLayoutManager(this)
-        clothesRV.adapter = ClothesAdapter(clothes)
+        val adapter = ClothesAdapter(clothes)
+        clothesRV.adapter = adapter
+        clothesRV.setHasFixedSize(true)
+
+        adapter.setOnItemClickListener(object : ClothesAdapter.OnItemLongClickListener {
+            override fun onItemClick(cloth: Cloth, position: Int) {
+                val args = Bundle()
+                args.putSerializable("item", cloth)
+                args.putInt("position", position)
+                val dialog = ItemDialog()
+                dialog.arguments = args
+                dialog.show(supportFragmentManager, "ItemDialog")
+            }
+
+        })
+
     }
 
     private fun initToolbar() {
@@ -36,6 +51,10 @@ class WardrobeActivity : AppCompatActivity() {
 
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
+
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        toolbar.setNavigationOnClickListener { onBackPressed() }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -45,9 +64,14 @@ class WardrobeActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.menu_exit -> finish()
+            R.id.menu_exit -> finishAffinity()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun updateItem(cloth: Cloth, position: Int) {
+        clothes[position] = cloth
+        clothesRV.adapter?.notifyItemChanged(position)
     }
 
 }

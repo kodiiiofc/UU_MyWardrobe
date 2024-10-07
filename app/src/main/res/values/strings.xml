@@ -2,4 +2,6 @@
     <string name="app_name">Мой гардероб</string>
     <string name="btn_start">К гардеробу!</string>
     <string name="menu_exit">Выход</string>
+    <string name="editor_name_et">Название</string>
+    <string name="editor_description_et">Описание</string>
 </resources>

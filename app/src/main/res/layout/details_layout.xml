@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="8dp">
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/dress"
+        android:id="@+id/details_image_iv"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/details_name_tv"
+        android:text="Название"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/details_description_tv"
+        android:text="Описание"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_gravity="start"
+        android:layout_marginTop="8dp"/>
+
+
+
+</LinearLayout>
