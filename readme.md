@@ -81,11 +81,12 @@
 
 <summary>Скриншоты здесь</summary>
 
-![](md/1.png)
-![](md/2.png)
-![](md/3.png)
-![](md/4.png)
-![](md/5.png)
-![](md/6.png)
+![](md/part2/1.png)
+![](md/part2/2.png)
+![](md/part2/3.png)
+![](md/part2/4.png)
+![](md/part2/5.png)
+![](md/part2/6.png)
+![](md/part2/7.png)
 
 </details>
